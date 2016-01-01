@@ -11,10 +11,10 @@ namespace HeatWave
     {
         private Dictionary<string, Texture> textureCache = new Dictionary<string, Texture>();
 
-        public Texture loadTexture(string path)
+        public Texture LoadTexture(string path)
         {
             if (textureCache.ContainsKey(path)) return textureCache[path];
-            if (!File.Exists(path)) path = "Assets/Textures/notFound.png";
+            if (!File.Exists(path)) return new Texture(0, 0, 0);
 
             int textureID = GL.GenTexture();
             GL.BindTexture(TextureTarget.Texture2D, textureID);

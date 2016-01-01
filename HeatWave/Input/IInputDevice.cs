@@ -1,6 +1,6 @@
 ﻿namespace HeatWave.Input
 {
-    class IInputDevice
+    interface IInputDevice
     {
     }
 }
