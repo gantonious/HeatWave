@@ -46,7 +46,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssetManager.cs" />
-    <Compile Include="Audio\IAudioPlayer.cs" />
+    <Compile Include="Audio\AudioBuffer.cs" />
+    <Compile Include="Audio\AudioManager.cs" />
+    <Compile Include="Audio\Source.cs" />
     <Compile Include="Graphics\Animation.cs" />
     <Compile Include="Graphics\BatchedRenderer.cs" />
     <Compile Include="Graphics\Camera.cs" />

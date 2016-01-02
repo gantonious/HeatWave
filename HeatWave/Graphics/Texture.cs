@@ -1,6 +1,9 @@
-﻿namespace HeatWave.Graphics
+﻿using System;
+using OpenTK.Graphics.OpenGL;
+
+namespace HeatWave.Graphics
 {
-    public class Texture
+    public class Texture : IDisposable
     {
         public int TextureID { get; private set; }
         public float Width { get; private set; }
@@ -11,6 +14,11 @@
             this.TextureID = textureID;
             this.Width = width;
             this.Height = height;
+        }
+
+        public void Dispose()
+        {
+            GL.DeleteTexture(TextureID);
         }
     }
 }

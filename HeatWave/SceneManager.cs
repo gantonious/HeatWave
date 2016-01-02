@@ -2,6 +2,7 @@
 using System.Drawing;
 using OpenTK;
 using OpenTK.Graphics.OpenGL;
+using OpenTK.Audio;
 using System.Collections.Generic;
 
 namespace HeatWave
@@ -9,10 +10,12 @@ namespace HeatWave
     public sealed class SceneManager : GameWindow
     {
         private Stack<Scene> scenes;
+        private AudioContext audioContext;
         public AssetManager AssetManager { get; private set; }
 
         public SceneManager(int width, int height) : base(width, height) {
             scenes = new Stack<Scene>();
+            audioContext = new AudioContext();
             AssetManager = new AssetManager();
         }
 
@@ -25,7 +28,7 @@ namespace HeatWave
             GL.Enable(EnableCap.Blend);
             GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);         
         }
-
+        
         public void PushScene(Scene scene)
         {
             UnbindEventsFromActiveScene();
