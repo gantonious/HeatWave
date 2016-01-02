@@ -13,6 +13,7 @@ namespace HeatWave
     public class AssetManager
     {
         private Dictionary<string, Texture> textureCache = new Dictionary<string, Texture>();
+        private Dictionary<string, AudioBuffer> audioCache = new Dictionary<string, AudioBuffer>();
 
         public Texture LoadTexture(string path)
         {
@@ -50,6 +51,9 @@ namespace HeatWave
         
         public AudioBuffer LoadWave(string path)
         {
+            if (textureCache.ContainsKey(path)) return audioCache[path];
+            if (!File.Exists(path)) return new AudioBuffer(0);
+
             Stream stream = File.Open(path, FileMode.Open);
             
             if (stream == null)
@@ -93,7 +97,8 @@ namespace HeatWave
 
                 AL.BufferData(bufferID, GetSoundFormat(num_channels, bits_per_sample), soundData, soundData.Length, sample_rate);
 
-                return new AudioBuffer(bufferID);
+                audioCache[path] = new AudioBuffer(bufferID);
+                return audioCache[path];
             }
         }
 

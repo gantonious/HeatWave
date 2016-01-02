@@ -6,7 +6,6 @@ namespace HeatWave.Audio
     public class Source : IDisposable
     {
         private AudioBuffer audioBuffer;
-
         public int SourceID { get; private set; }
 
         public AudioBuffer AudioBuffer
@@ -19,6 +18,19 @@ namespace HeatWave.Audio
             }
         }
 
+        public bool Looping
+        {
+            get
+            {   bool isLooping;
+                AL.GetSource(SourceID, ALSourceb.Looping, out isLooping);
+                return isLooping;
+            }
+            set
+            {
+                AL.Source(SourceID, ALSourceb.Looping, value);
+            }
+        }
+        
         public Source(AudioBuffer audioBuffer)
         {
             this.SourceID = AL.GenSource();
@@ -28,6 +40,16 @@ namespace HeatWave.Audio
         public void SetPosition(float x, float y)
         {
             AL.Source(SourceID, ALSource3f.Position, x, y, 0);
+        }
+
+        public void SetVelocity(float xVelocity, float yVelocity)
+        {
+            AL.Source(SourceID, ALSource3f.Position, xVelocity, yVelocity, 0);
+        }
+
+        public void SetDirection(float x, float y)
+        {
+            AL.Source(SourceID, ALSource3f.Direction, x, y, 0);
         }
 
         public void Play()

@@ -1,6 +1,6 @@
 HeatWave
 ========
-A 2D game engine made in c# using OpenTK.
+A 2D game engine made in C# using OpenTK.
 
 Description
 -----------

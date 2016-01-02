@@ -20,5 +20,32 @@ namespace HeatWave.Graphics
         {
             GL.DeleteTexture(TextureID);
         }
+
+        public override bool Equals(object obj)
+        {
+            if (Object.ReferenceEquals(this, obj)) return true;
+            if (obj == null || obj.GetType() != this.GetType()) return false;
+
+            Texture other = (Texture)obj;
+
+            return this.TextureID == other.TextureID
+                   && this.Width == other.Width
+                   && this.Height == other.Height;
+        }
+
+        public override int GetHashCode()
+        {
+            return TextureID;
+        }
+
+        public static bool operator ==(Texture left, Texture right)
+        {
+            return left.Equals(right);
+        }
+
+        public static bool operator !=(Texture left, Texture right)
+        {
+            return !(left == right);
+        }
     }
 }
