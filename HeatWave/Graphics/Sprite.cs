@@ -2,10 +2,10 @@
 {
     public class Sprite : TexturedRegion
     {
-        public float X { get; protected set; }
-        public float Y { get; protected set; }
-        public float Width { get; protected set; }
-        public float Height { get; protected set; }
+        public float X { get; set; }
+        public float Y { get; set; }
+        public float Width { get; set; }
+        public float Height { get; set; }
 
         public Sprite(float x, float y, float width, float height, Texture texture) : base (texture)
         {

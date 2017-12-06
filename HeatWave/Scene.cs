@@ -11,7 +11,7 @@ namespace HeatWave
             SceneManager = sceneManager;
         }
 
-        public abstract void SceneResized(object sender, EventArgs e);
+        public virtual void SceneResized(object sender, EventArgs e) { }
         public abstract void Update(double delta);
         public abstract void Render();
     }

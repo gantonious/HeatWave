@@ -3,6 +3,7 @@ using OpenTK;
 using OpenTK.Audio;
 using OpenTK.Graphics.OpenGL;
 using System.Collections.Generic;
+using OpenTK.Input;
 
 namespace HeatWave
 {

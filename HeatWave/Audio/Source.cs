@@ -10,7 +10,10 @@ namespace HeatWave.Audio
 
         public AudioBuffer AudioBuffer
         {
-            get { return audioBuffer; }
+            get
+            {
+                return audioBuffer;
+            }
             private set
             {
                 AL.Source(SourceID, ALSourcei.Buffer, value.BufferID);
@@ -28,6 +31,20 @@ namespace HeatWave.Audio
             set
             {
                 AL.Source(SourceID, ALSourceb.Looping, value);
+            }
+        }
+
+        public float ReferenceDistance
+        {
+            get
+            {
+                float referenceDistance;
+                AL.GetSource(SourceID, ALSourcef.ReferenceDistance, out referenceDistance);
+                return referenceDistance;
+            }
+            set
+            {
+                AL.Source(SourceID, ALSourcef.ReferenceDistance, value);
             }
         }
         

@@ -41,6 +41,8 @@ namespace HeatWave
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter,
                 (int)TextureMagFilter.Linear);
 
+            GL.BindTexture(TextureTarget.Texture2D, 0);
+
             textureCache[path] = new Texture(textureID, bmp.Width, bmp.Height);
             return textureCache[path];
         }

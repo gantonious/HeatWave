@@ -42,8 +42,8 @@ namespace HeatWave.Graphics.Utils
 
         public void BindAttributes()
         {
-            //bindAttribute(0, "position");
-            //bindAttribute(1, "textureCoords");
+            BindAttribute(0, "position");
+            BindAttribute(1, "textureCoords");
         }
 
         public void GetUniforms()
@@ -58,6 +58,11 @@ namespace HeatWave.Graphics.Utils
                 uniforms[uniformName] = GL.GetUniformLocation(shaderProgramID, uniformName);
             }
             return uniforms[uniformName];
+        }
+
+        public void LoadWorldRef(Matrix4 matrix)
+        {
+            LoadMatrix(uniforms["transformationMatrix"], matrix);
         }
 
         public void LoadFloat(int location, float number)
